@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="User and Groups">
+  <test thread-count="5" name="Creation Flow">
+    <classes>
+      <class name="Doocti107.UserGroupCreatiom">
+		  <methods>
+			  <include name="Create_Usergroup"/>
+			  <include name="Create_User"/>
+			  <include name="Create_Channel"/>
+			  <include name="Create_Source"/>
+			  <include name="Create_Team"/>
+		  </methods>
+	  </class>
+     
+    </classes>
+  </test> <!-- Creation Flow -->
+</suite> <!-- User and Groups -->

@@ -465,9 +465,7 @@ public class SeleniumBase implements SeleniumInterface {
 		WebElement filterelement = wait.until(ExpectedConditions.visibilityOf(filterele));
 		
 		filterelement.sendKeys(actualVaule);
-		
-		driver.findElement(By.xpath("(//div[text()='Filter'])[1]")).click();
-		
+				
 		driver.findElement(By.xpath("(//div[contains(@class,'container sidenavFooter')]//button)[2]"));
 		
 		boolean expectedValue = driver.findElement(By.xpath("//td[text()='"+actualVaule+"']")).isDisplayed();

@@ -30,6 +30,11 @@
 			  <include name="create_InboundwithoutBlklist"/>
 			  <include name="create_OminiChannel"/>
 			  <include name="create_TimeZone"/>
+		      <include name="create_Noti"/>
+			  <include name="create_SystemSettingDataLead"/>
+			  <include name="create_SystemSettingDataTicket"/>
+			  <include name="create_MeetingTitle"/>
+
 
 
 

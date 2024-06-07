@@ -5,11 +5,11 @@
     <classes>
       <class name="Doocti107_Admin.Configu_Createion">
         <methods>
+          <include name="create_Queue" invocation-numbers="0"/>
           <include name="openConfig"/>
           <include name="setUp"/>
           <include name="closeConfig"/>
           <include name="setDown"/>
-          <include name="create_InboundwithoutBlklist"/>
         </methods>
       </class> <!-- Doocti107_Admin.Configu_Createion -->
     </classes>

@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.commons.compress.archivers.sevenz.CLI;
 import org.doocti.seleniumEnum.Browser;
 import org.doocti.seleniumEnum.Locators;
 import org.openqa.selenium.By;
@@ -33,8 +32,8 @@ import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 
-import io.cucumber.java.it.Data;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class SeleniumBase implements SeleniumInterface {
@@ -455,6 +454,31 @@ public class SeleniumBase implements SeleniumInterface {
 		rb.keyPress(KeyEvent.VK_J);
 	}
 	
+	
+	public void AssertwithFilterdropdown(WebElement ele,String actualVaule ,WebElement filterele) {
+		
+		
+		WebElement element = wait.until(ExpectedConditions.visibilityOf(ele));
+		
+		ele.click();
+		
+		WebElement filterelement = wait.until(ExpectedConditions.visibilityOf(filterele));
+		
+		filterelement.sendKeys(actualVaule);
+		
+		driver.findElement(By.xpath("(//div[text()='Filter'])[1]")).click();
+		
+		driver.findElement(By.xpath("(//div[contains(@class,'container sidenavFooter')]//button)[2]"));
+		
+		boolean expectedValue = driver.findElement(By.xpath("//td[text()='"+actualVaule+"']")).isDisplayed();
+		
+		Assert.assertTrue(expectedValue, "Assert Failed");
+		
+		
+		
+		
+		
+	}
 //  		<============================================ Configuration Data's ==============================================>
 	
 
@@ -466,12 +490,13 @@ public class SeleniumBase implements SeleniumInterface {
 	@DataProvider(name ="QueueData")
 	public String[][] queueData() {
 
-		String [][]qdata = new String [1][4];
+		String [][]qdata = new String [1][5];
 
 		qdata[0][0] ="Test_Queue";
 		qdata[0][1] = "3";
 		qdata[0][2]="1";
 		qdata[0][3]="25";
+		qdata[0][4]="Queues";
 
 
 		return qdata;
@@ -502,8 +527,8 @@ public class SeleniumBase implements SeleniumInterface {
 
 		String [][] sddata = new String[1][6];
 
-		sddata[0][0]="Test Dispo";
-		sddata[0][1]="Demo";
+		sddata[0][0]="Test Action";
+		sddata[0][1]="Test SUb Dispo";
 		sddata[0][2]="Testing Purpose";
 		sddata[0][3] ="3";
 		sddata[0][4] ="2";
@@ -626,7 +651,7 @@ public class SeleniumBase implements SeleniumInterface {
 
 		String [][]tagdata = new String[1][5];
 
-		tagdata[0][0]= "Testing";
+		tagdata[0][0]= "Testing Tag";
 		tagdata[0][1] ="Test purpose";
 		tagdata[0][2] ="3";
 		tagdata[0][3] ="1";
@@ -731,7 +756,7 @@ public class SeleniumBase implements SeleniumInterface {
 		String [][]inbounddata = new String[1][7];
 
 		inbounddata[0][0]= "123";
-		inbounddata[0][1] ="Testing";
+		inbounddata[0][1] ="Testing Inbound";
 		inbounddata[0][2] ="queue";
 		inbounddata[0][3] ="Test_Queue";
 		inbounddata[0][4] ="3";
@@ -799,12 +824,26 @@ public class SeleniumBase implements SeleniumInterface {
 
 	}
 
+	
+	@DataProvider(name ="SystemSettingData")
+	public String[][] SystemSettingData() {
+		
+		String[][]syssetdata = new String[1][2];
+		
+		syssetdata[0][0] ="Serial";
+		syssetdata[0][1] ="Serial";
+
+		
+		return syssetdata;
+	}
+	
+	
 	@DataProvider(name = "MeetingTitleData")
 	public String[][] meetingtitleData() {
 
 		String[][] meetingtitledata = new String[1][6];
 
-		meetingtitledata[0][0] ="Test Title";
+		meetingtitledata[0][0] ="Test Meeting Title";
 		meetingtitledata[0][1] ="Testing";
 		meetingtitledata[0][2] ="Testing Purpose";
 		meetingtitledata[0][3] ="4";

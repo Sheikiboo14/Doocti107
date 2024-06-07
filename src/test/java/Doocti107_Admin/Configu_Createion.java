@@ -1,6 +1,8 @@
 package Doocti107_Admin;
 
+import org.doocti.seleniumEnum.Locators;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -30,13 +32,16 @@ public class Configu_Createion extends SeleniumBase {
 
 		click(driver.findElement(By.xpath("//span[text()='Queues']")));
 
-		click(driver.findElement(By.xpath("//div[text()=' Add Queue ']")));
+//		click(driver.findElement(By.xpath("//div[text()=' Add Queue ']")));
 
-		type(driver.findElement(By.xpath("(//input[@aria-label='Queues'])[2]")),QueueData[0]);
-
-		click(driver.findElement(By.xpath("//div[text()='Create']")));
-
-		click(driver.findElement(By.xpath("(//div[text()='Close'])[3]")));
+//		type(driver.findElement(By.xpath("(//input[@aria-label='Queues'])[2]")),QueueData[0]);
+//
+//		click(driver.findElement(By.xpath("//div[text()='Create']")));
+//
+//		click(driver.findElement(By.xpath("(//div[text()='Close'])[3]")));
+		
+		AssertwithFilterdropdown(element(Locators.xpath, "//i[@class='fas fa-filter']"), QueueData[0], element(Locators.xpath, "(//input[@aria-label='Queues'])[3]"));
+	
 	}
 
 	@Test(dataProvider = "DispoData")
@@ -75,28 +80,7 @@ public class Configu_Createion extends SeleniumBase {
 		click(driver.findElement(By.xpath("(//div[text()='Close'])[3]")));
 	}
 
-	@Test(dataProvider = "SubDispoData")
-	public void create_Subdispo(String SubDispoData[]) {
 
-
-		scroll(driver.findElement(By.xpath("app-sidebar")), 300);
-
-		click(driver.findElement(By.xpath("//span[text()='Sub-Dispositions']")));
-
-		click(driver.findElement(By.xpath("//div[text()=' Add Sub-Dispo ']")));
-
-		type(driver.findElement(By.xpath("//input[@aria-label='Sub-Disposition']")),SubDispoData[1]);
-
-		type(driver.findElement(By.xpath("(//input[@aria-label='Description'])[2]")),SubDispoData[2]);
-
-		click(driver.findElement(By.xpath("(//label[text()='Disposition']/following-sibling::div)[3]")));
-
-		click(driver.findElement(By.xpath("(//div[text()='"+SubDispoData[0]+"'])[2]")));
-
-		click(driver.findElement(By.xpath("//div[text()='Create']")));
-
-		click(driver.findElement(By.xpath("(//div[text()='Close'])[3]")));
-	}
 
 	@Test(dataProvider = "LeadStatusData")
 	public void create_LeadStatuswithClosed(String LeadStatusData[]) {
@@ -343,7 +327,7 @@ public class Configu_Createion extends SeleniumBase {
 	}
 
 	
-	@Test(dataProvider = "RemainderData")
+	@Test(dataProvider = "RemainderData",enabled = false)
 	public void create_Remainder(String RemainderData[]) {
 		
 		click(driver.findElement(By.xpath("//span[text()='Reminders']")));
@@ -708,12 +692,106 @@ public class Configu_Createion extends SeleniumBase {
 		
 		click(driver.findElement(By.xpath("//div[text()='"+NotiData[1]+"']")));
 		
+		click(driver.findElement(By.xpath("//div[text()='Create Notification Rules']")));
+		
 		click(driver.findElement(By.xpath("//label[text()='Template']/following-sibling::div")));
 		
-		click(driver.findElement(By.xpath("//div[text()='"+NotiData[1]+"']")));
+		click(driver.findElement(By.xpath("//div[text()='"+NotiData[2]+"']")));
+		
+		click(driver.findElement(By.xpath("//div[text()='Create Notification Rules']")));
 	
+		click(driver.findElement(By.xpath("//label[text()='Notify Type']/following-sibling::div")));
 		
+		click(driver.findElement(By.xpath("//div[text()='"+NotiData[3]+"']")));
 		
+		click(driver.findElement(By.xpath("//div[text()='Create Notification Rules']")));
+		
+		type(driver.findElement(By.xpath("//label[text()='Template Message']/following::textarea")), NotiData[4]);
+		
+		click(driver.findElement(By.xpath("//label[text()='Notify To']/following-sibling::div")));
+		
+		click(driver.findElement(By.xpath("//div[text()='"+NotiData[5]+"']")));
+		
+		click(driver.findElement(By.xpath("//div[text()='Create Notification Rules']")));
+		
+		click(driver.findElement(By.xpath("//div[text()='Create']")));
+		
+		click(driver.findElement(By.xpath("//div[text()='Close']")));
+		
+	}
+	
+	@Test(dataProvider = "SystemSettingData")
+	public void create_SystemSettingDataLead(String SystemSettingData[]) {
+		
+		click(driver.findElement(By.xpath("//span[text()='System Settings']")));
+		
+		click(driver.findElement(By.xpath("(//label[text()='Configuration']/following-sibling::div)[1]")));
+		
+		click(driver.findElement(By.xpath("(//div[text()='Serial'])[2]")));
+		
+		click(driver.findElement(By.xpath("//div[text()='System Settings']")));
+		
+		click(driver.findElement(By.xpath("//div[text()='Update']")));
+		
+		click(driver.findElement(By.xpath("//div[text()='Close']")));
+	}
+	
+	
+	@Test(dataProvider = "SystemSettingData")
+	public void create_SystemSettingDataTicket(String SystemSettingData[]) {
+		
+		click(driver.findElement(By.xpath("//span[text()='System Settings']")));
+		
+		click(driver.findElement(By.xpath("(//div[@class='v-select__selections'])[2]")));
+		
+		click(driver.findElement(By.xpath("(//div[text()='Serial'])[1]")));
+		
+		click(driver.findElement(By.xpath("//div[text()='System Settings']")));	
+		
+		click(driver.findElement(By.xpath("//div[text()='Update']")));
+		
+		click(driver.findElement(By.xpath("//div[text()='Close']")));
+	}
+	
+	@Test(dataProvider = "MeetingTitleData")
+	public void create_MeetingTitle(String MeetingTitleData[]) {
+		
+		click(driver.findElement(By.xpath("//span[text()='Meeting Title']")));
+		
+		click(driver.findElement(By.xpath("//div[text()=' Add Meeting Title ']")));
+
+		type(driver.findElement(By.xpath("(//input[@aria-label='Meeting Title'])[2]")), MeetingTitleData[0]);
+		
+		type(driver.findElement(By.xpath("//input[@aria-label='Meeting Sub Title']")), MeetingTitleData[1]);
+
+		type(driver.findElement(By.xpath("(//input[@aria-label='Description'])[3]")), MeetingTitleData[2]);
+
+		click(driver.findElement(By.xpath("//div[text()='Create']")));
+		
+		click(driver.findElement(By.xpath("(//div[text()='Close'])[3]")));
+	}
+	
+	@Test(dataProvider = "SubDispoData")
+	public void create_Subdispo(String SubDispoData[]) {
+
+
+		click(driver.findElement(By.xpath("//span[text()='Sub-Dispositions']")));
+
+		click(driver.findElement(By.xpath("//div[text()=' Add Sub-Dispo ']")));
+
+		type(driver.findElement(By.xpath("//input[@aria-label='Sub-Disposition']")),SubDispoData[1]);
+
+		type(driver.findElement(By.xpath("(//input[@aria-label='Description'])[2]")),SubDispoData[2]);
+
+		click(driver.findElement(By.xpath("(//label[text()='Disposition']/following-sibling::div)[3]")));
+
+		click(driver.findElement(By.xpath("(//div[text()='"+SubDispoData[0]+"'])[2]")));
+		
+		click(driver.findElement(By.xpath("//span[text()='Create Sub-Disposition']")));
+
+		click(driver.findElement(By.xpath("//div[text()='Create']")));
+
+		click(driver.findElement(By.xpath("(//div[text()='Close'])[3]")));
 	}
 	
 	

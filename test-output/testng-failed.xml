@@ -6,10 +6,10 @@
       <class name="Doocti107_Admin.Configu_Createion">
         <methods>
           <include name="openConfig"/>
-          <include name="create_Schedule"/>
           <include name="setUp"/>
           <include name="closeConfig"/>
           <include name="setDown"/>
+          <include name="create_InboundwithoutBlklist"/>
         </methods>
       </class> <!-- Doocti107_Admin.Configu_Createion -->
     </classes>

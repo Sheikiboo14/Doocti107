@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Configuration">
+  <test thread-count="5" name="Flow Test">
+    <classes>
+      <class name="Doocti107_Admin.Configu_Createion">
+		  <methods>
+			  <include name="create_Queue"/>
+			  <include name="create_DispowithAction"/>
+			  <include name="create_Queue"/>
+			  <include name="create_DispowithoutAction"/>
+			  <include name="create_Subdispo"/>
+			  <include name="create_LeadStatuswithClosed"/>
+			  <include name="create_LeadStatuswithoutClosed"/>
+			  <include name="create_TicketStatuswithClosed"/>
+			  <include name="create_TicketStatuswithoutClosed"/>
+			  <include name="create_PauseCode"/>
+			  <include name="upload_Audio"/>
+			  <include name="upload_Blocklist"/>
+			  <include name="upload_DNC"/>
+			  <include name="upload_DID"/>
+			  <include name="create_DID"/>
+			  <include name="create_Tag"/>
+			  <include name="create_Announcement"/>
+			  <include name="create_ScriptURL"/>
+			  <include name="create_ScriptText"/>
+			  <include name="create_SLA"/>
+			  <include name="create_Schedule"/>
+			  <include name="create_InboundwithBlklist"/>
+			  <include name="create_InboundwithoutBlklist"/>
+			  <include name="create_OminiChannel"/>
+			  <include name="create_TimeZone"/>
+
+
+
+		  </methods>
+	  </class>
+    </classes>
+  </test> <!-- Flow Test -->
+</suite> <!-- Configuration -->

@@ -744,13 +744,26 @@ public class SeleniumBase implements SeleniumInterface {
 		return inbounddata;
 
 	}
+	
+	@DataProvider(name = "OminiData")
+	public String[][] OminiData() {
+		
+		String [][] ominidata = new String[1][4];
+		
+		ominidata[0][0] ="WhatsApp";
+		ominidata[0][1] ="123456789";
+		ominidata[0][2] ="Preview Campaign";
+		ominidata[0][3] ="Test_Queue";
+		
+		return ominidata;
+	}
 
 	@DataProvider(name = "TimezoneData")
 	public String[][] timezoneData() {
 
 		String [][]timezonedata = new String[1][10];
 
-		timezonedata[0][0]= "Test";
+		timezonedata[0][0]= "Test Timezone";
 		timezonedata[0][1] ="Testing";
 		timezonedata[0][2] ="0";
 		timezonedata[0][3] ="05";
@@ -767,6 +780,22 @@ public class SeleniumBase implements SeleniumInterface {
 
 
 		return timezonedata;
+
+	}
+	
+	@DataProvider(name = "NotiData")
+	public String[][] NotiData() {
+		
+		String[][]notidata = new String[1][6];
+		
+		notidata[0][0] ="Test Noti";
+		notidata[0][1] ="Lead";
+		notidata[0][2] ="LeadTest";
+		notidata[0][3] ="SMS";
+		notidata[0][4] ="Testing";
+		notidata[0][5] ="Caller";
+		
+		return notidata;
 
 	}
 

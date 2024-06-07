@@ -585,7 +585,7 @@ public class Configu_Createion extends SeleniumBase {
 		
 		click(driver.findElement(By.xpath("//label[text()='Destination Value']/following-sibling::div")));
 		
-		click(driver.findElement(By.xpath("(//div[text()='"+InboundData[3]+"'])[3]")));
+		click(driver.findElement(By.xpath("(//div[text()='"+InboundData[3]+"'])[2]")));
 	
 		click(driver.findElement(By.xpath("//span[text()='Create Inbound Route']")));
 		
@@ -617,7 +617,7 @@ public class Configu_Createion extends SeleniumBase {
 		
 		click(driver.findElement(By.xpath("//label[text()='Destination Value']/following-sibling::div")));
 		
-		click(driver.findElement(By.xpath("(//div[text()='"+InboundData[3]+"'])[3]")));
+		click(driver.findElement(By.xpath("(//div[text()='"+InboundData[3]+"'])[2]")));
 	
 		click(driver.findElement(By.xpath("//span[text()='Create Inbound Route']")));
 				
@@ -626,6 +626,98 @@ public class Configu_Createion extends SeleniumBase {
 		click(driver.findElement(By.xpath("(//div[text()='Close'])[3]")));
 		
 	}
+	
+	@Test(dataProvider = "OminiData")
+	public void create_OminiChannel(String OminiData[]) {
+		
+		click(driver.findElement(By.xpath("//span[text()='Omnichannel Route']")));
+		
+		click(driver.findElement(By.xpath("//div[text()=' New Routing ']")));
+		
+		type(driver.findElement(By.xpath("(//label[text()=' DID Routing']/following::input)[1]")), OminiData[1]);
+		
+		click(driver.findElement(By.xpath("(//label[text()='Channel']/following-sibling::div)[3]")));
+		
+		click(driver.findElement(By.xpath("(//div[text()='"+OminiData[0]+"'])[2]")));
+	
+		click(driver.findElement(By.xpath("//span[text()='Create Omni-Channel Route']")));
+
+		click(driver.findElement(By.xpath("(//label[text()='Campaign']/following-sibling::div)[3]")));
+		
+		click(driver.findElement(By.xpath("(//div[text()='"+OminiData[2]+"'])[3]")));
+	
+		click(driver.findElement(By.xpath("//span[text()='Create Omni-Channel Route']")));
+		
+		click(driver.findElement(By.xpath("(//label[text()='Queue']/following-sibling::div)[3]")));
+		
+		click(driver.findElement(By.xpath("(//div[text()='"+OminiData[3]+"'])[3]")));
+	
+		click(driver.findElement(By.xpath("//span[text()='Create Omni-Channel Route']")));
+		
+		click(driver.findElement(By.xpath("//div[text()='Create']")));
+		
+		click(driver.findElement(By.xpath("(//div[text()='Close'])[3]")));
+	}
+	
+	@Test(dataProvider ="TimezoneData")
+	public void create_TimeZone(String TimezoneData[]) {
+		
+		click(driver.findElement(By.xpath("//span[text()='Timezone']")));
+		
+		click(driver.findElement(By.xpath("//div[text()=' Add Timezone ']")));
+		
+		type(driver.findElement(By.xpath("(//input[@aria-label='Zone Name'])[2]")), TimezoneData[0]);
+		
+		type(driver.findElement(By.xpath("(//input[@aria-label='Description'])[2]")), TimezoneData[1]);
+
+		click(driver.findElement(By.xpath("(//input[@aria-label='Start Time'])[2]")));
+		
+		click(driver.findElement(By.xpath("//span[text()='"+TimezoneData[2]+"']")));
+		
+		click(driver.findElement(By.xpath("//span[text()='"+TimezoneData[3]+"']")));
+
+		click(driver.findElement(By.xpath("(//input[@aria-label='End Time'])[2]")));
+		
+		click(driver.findElement(By.xpath("//span[text()='"+TimezoneData[4]+"']")));
+		
+		click(driver.findElement(By.xpath("//span[text()='"+TimezoneData[5]+"']")));
+	
+		click(driver.findElement(By.xpath("(//label[text()='Status']/following-sibling::div)[3]")));
+		
+		click(driver.findElement(By.xpath("(//div[text()='"+TimezoneData[6]+"'])[3]")));
+	
+		click(driver.findElement(By.xpath("//span[text()='Create Timezone']")));	
+		
+		click(driver.findElement(By.xpath("//div[text()='Create']")));	
+		
+		click(driver.findElement(By.xpath("(//div[text()='Close'])[3]")));
+
+	
+	}
+	
+	@Test(dataProvider = "NotiData")
+	public void create_Noti(String NotiData[]) {
+		
+		click(driver.findElement(By.xpath("//span[text()='Notification']")));
+		
+		click(driver.findElement(By.xpath("//div[text()=' New ']")));
+		
+		type(driver.findElement(By.xpath("//input[@aria-label='Name']")), NotiData[0]);
+
+		click(driver.findElement(By.xpath("//label[text()='Rule Module']/following-sibling::div")));
+		
+		click(driver.findElement(By.xpath("//div[text()='"+NotiData[1]+"']")));
+		
+		click(driver.findElement(By.xpath("//label[text()='Template']/following-sibling::div")));
+		
+		click(driver.findElement(By.xpath("//div[text()='"+NotiData[1]+"']")));
+	
+		
+		
+	}
+	
+	
+	
 }
 
 

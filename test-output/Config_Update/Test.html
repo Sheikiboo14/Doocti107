@@ -1,0 +1,164 @@
+<html>
+<head>
+<title>TestNG:  Test</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>Test</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>17/0/0</td>
+</tr><tr>
+<td>Started on:</td><td>Thu Jul 11 12:30:54 IST 2024</td>
+</tr>
+<tr><td>Total time:</td><td>118 seconds (118406 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='Doocti107_Admin.Config_Update.update_LeadStatuswithclosed()'><b>update_LeadStatuswithclosed</b><br>Test class: Doocti107_Admin.Config_Update<br>Parameters: [Ljava.lang.String;@5b0d8236</td>
+<td></td>
+<td>5</td>
+<td>Doocti107_Admin.Config_Update@5db6b9cd</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Update.update_Tag()'><b>update_Tag</b><br>Test class: Doocti107_Admin.Config_Update<br>Parameters: [Ljava.lang.String;@1ee9a039</td>
+<td></td>
+<td>5</td>
+<td>Doocti107_Admin.Config_Update@5db6b9cd</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Update.update_Announcement()'><b>update_Announcement</b><br>Test class: Doocti107_Admin.Config_Update<br>Parameters: [Ljava.lang.String;@34a2e10c</td>
+<td></td>
+<td>6</td>
+<td>Doocti107_Admin.Config_Update@5db6b9cd</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Update.update_Inbound()'><b>update_Inbound</b><br>Test class: Doocti107_Admin.Config_Update<br>Parameters: [Ljava.lang.String;@6e32eea5</td>
+<td></td>
+<td>4</td>
+<td>Doocti107_Admin.Config_Update@5db6b9cd</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Update.Update_Dispo()'><b>Update_Dispo</b><br>Test class: Doocti107_Admin.Config_Update<br>Parameters: [Ljava.lang.String;@5919dd67</td>
+<td></td>
+<td>7</td>
+<td>Doocti107_Admin.Config_Update@5db6b9cd</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Update.update_ScriptText()'><b>update_ScriptText</b><br>Test class: Doocti107_Admin.Config_Update<br>Parameters: [Ljava.lang.String;@aa24615</td>
+<td></td>
+<td>9</td>
+<td>Doocti107_Admin.Config_Update@5db6b9cd</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Update.update_ScriptURL()'><b>update_ScriptURL</b><br>Test class: Doocti107_Admin.Config_Update<br>Parameters: [Ljava.lang.String;@29ab7ccc</td>
+<td></td>
+<td>9</td>
+<td>Doocti107_Admin.Config_Update@5db6b9cd</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Update.update_TicketStatuswithclosed()'><b>update_TicketStatuswithclosed</b><br>Test class: Doocti107_Admin.Config_Update<br>Parameters: [Ljava.lang.String;@5095f89a</td>
+<td></td>
+<td>6</td>
+<td>Doocti107_Admin.Config_Update@5db6b9cd</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Update.Update_Dispowithaction()'><b>Update_Dispowithaction</b><br>Test class: Doocti107_Admin.Config_Update<br>Parameters: [Ljava.lang.String;@4770e50a</td>
+<td></td>
+<td>6</td>
+<td>Doocti107_Admin.Config_Update@5db6b9cd</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Update.update_TicketStatus()'><b>update_TicketStatus</b><br>Test class: Doocti107_Admin.Config_Update<br>Parameters: [Ljava.lang.String;@5f7a911f</td>
+<td></td>
+<td>5</td>
+<td>Doocti107_Admin.Config_Update@5db6b9cd</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Update.update_TimeZone()'><b>update_TimeZone</b><br>Test class: Doocti107_Admin.Config_Update<br>Parameters: [Ljava.lang.String;@2d45db20</td>
+<td></td>
+<td>6</td>
+<td>Doocti107_Admin.Config_Update@5db6b9cd</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Update.update_MeetingTitle()'><b>update_MeetingTitle</b><br>Test class: Doocti107_Admin.Config_Update<br>Parameters: [Ljava.lang.String;@52ebb73a</td>
+<td></td>
+<td>4</td>
+<td>Doocti107_Admin.Config_Update@5db6b9cd</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Update.update_Inboundwithblk()'><b>update_Inboundwithblk</b><br>Test class: Doocti107_Admin.Config_Update<br>Parameters: [Ljava.lang.String;@127350d8</td>
+<td></td>
+<td>4</td>
+<td>Doocti107_Admin.Config_Update@5db6b9cd</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Update.update_LeadStatus()'><b>update_LeadStatus</b><br>Test class: Doocti107_Admin.Config_Update<br>Parameters: [Ljava.lang.String;@198ad9e0</td>
+<td></td>
+<td>6</td>
+<td>Doocti107_Admin.Config_Update@5db6b9cd</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Update.update_DID()'><b>update_DID</b><br>Test class: Doocti107_Admin.Config_Update<br>Parameters: [Ljava.lang.String;@1a958d2a</td>
+<td></td>
+<td>5</td>
+<td>Doocti107_Admin.Config_Update@5db6b9cd</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Update.update_Pausecode()'><b>update_Pausecode</b><br>Test class: Doocti107_Admin.Config_Update<br>Parameters: [Ljava.lang.String;@15c8bb25</td>
+<td></td>
+<td>7</td>
+<td>Doocti107_Admin.Config_Update@5db6b9cd</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Update.update_SubDispo()'><b>update_SubDispo</b><br>Test class: Doocti107_Admin.Config_Update<br>Parameters: [Ljava.lang.String;@1d35dcd4</td>
+<td></td>
+<td>6</td>
+<td>Doocti107_Admin.Config_Update@5db6b9cd</td></tr>
+</table><p>
+</body>
+</html>

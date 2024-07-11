@@ -1,0 +1,169 @@
+<html>
+<head>
+<title>TestNG:  Test</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>Test</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>18/0/0</td>
+</tr><tr>
+<td>Started on:</td><td>Thu Jul 11 12:35:17 IST 2024</td>
+</tr>
+<tr><td>Total time:</td><td>120 seconds (120053 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='Doocti107_Admin.Config_Deletion.delete_Dispowithaction()'><b>delete_Dispowithaction</b><br>Test class: Doocti107_Admin.Config_Deletion<br>Parameters: [Ljava.lang.String;@49652431</td>
+<td></td>
+<td>6</td>
+<td>Doocti107_Admin.Config_Deletion@2f953efd</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Deletion.delete_ScriptText()'><b>delete_ScriptText</b><br>Test class: Doocti107_Admin.Config_Deletion<br>Parameters: [Ljava.lang.String;@7ac397d6</td>
+<td></td>
+<td>7</td>
+<td>Doocti107_Admin.Config_Deletion@2f953efd</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Deletion.delete_DID()'><b>delete_DID</b><br>Test class: Doocti107_Admin.Config_Deletion<br>Parameters: [Ljava.lang.String;@3ec69823</td>
+<td></td>
+<td>4</td>
+<td>Doocti107_Admin.Config_Deletion@2f953efd</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Deletion.delete_Pausecode()'><b>delete_Pausecode</b><br>Test class: Doocti107_Admin.Config_Deletion<br>Parameters: [Ljava.lang.String;@5058da5a</td>
+<td></td>
+<td>7</td>
+<td>Doocti107_Admin.Config_Deletion@2f953efd</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Deletion.delete_Queue()'><b>delete_Queue</b><br>Test class: Doocti107_Admin.Config_Deletion<br>Parameters: [Ljava.lang.String;@30fc38cc</td>
+<td></td>
+<td>5</td>
+<td>Doocti107_Admin.Config_Deletion@2f953efd</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Deletion.delete_Inboundwithblk()'><b>delete_Inboundwithblk</b><br>Test class: Doocti107_Admin.Config_Deletion<br>Parameters: [Ljava.lang.String;@56677422</td>
+<td></td>
+<td>4</td>
+<td>Doocti107_Admin.Config_Deletion@2f953efd</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Deletion.delete_TimeZone()'><b>delete_TimeZone</b><br>Test class: Doocti107_Admin.Config_Deletion<br>Parameters: [Ljava.lang.String;@5c6af94d</td>
+<td></td>
+<td>7</td>
+<td>Doocti107_Admin.Config_Deletion@2f953efd</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Deletion.delete_SubDispo()'><b>delete_SubDispo</b><br>Test class: Doocti107_Admin.Config_Deletion<br>Parameters: [Ljava.lang.String;@4a767290</td>
+<td></td>
+<td>6</td>
+<td>Doocti107_Admin.Config_Deletion@2f953efd</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Deletion.delete_ScriptURL()'><b>delete_ScriptURL</b><br>Test class: Doocti107_Admin.Config_Deletion<br>Parameters: [Ljava.lang.String;@1b1d094a</td>
+<td></td>
+<td>7</td>
+<td>Doocti107_Admin.Config_Deletion@2f953efd</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Deletion.delete_TicketStatuswithclosed()'><b>delete_TicketStatuswithclosed</b><br>Test class: Doocti107_Admin.Config_Deletion<br>Parameters: [Ljava.lang.String;@76b6b86f</td>
+<td></td>
+<td>6</td>
+<td>Doocti107_Admin.Config_Deletion@2f953efd</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Deletion.delete_Tag()'><b>delete_Tag</b><br>Test class: Doocti107_Admin.Config_Deletion<br>Parameters: [Ljava.lang.String;@7d1d9765</td>
+<td></td>
+<td>6</td>
+<td>Doocti107_Admin.Config_Deletion@2f953efd</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Deletion.delete_Announcement()'><b>delete_Announcement</b><br>Test class: Doocti107_Admin.Config_Deletion<br>Parameters: [Ljava.lang.String;@48698a4</td>
+<td></td>
+<td>6</td>
+<td>Doocti107_Admin.Config_Deletion@2f953efd</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Deletion.delete_LeadStatus()'><b>delete_LeadStatus</b><br>Test class: Doocti107_Admin.Config_Deletion<br>Parameters: [Ljava.lang.String;@77a28627</td>
+<td></td>
+<td>6</td>
+<td>Doocti107_Admin.Config_Deletion@2f953efd</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Deletion.delete_Inbound()'><b>delete_Inbound</b><br>Test class: Doocti107_Admin.Config_Deletion<br>Parameters: [Ljava.lang.String;@34942d7c</td>
+<td></td>
+<td>3</td>
+<td>Doocti107_Admin.Config_Deletion@2f953efd</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Deletion.delete_MeetingTitle()'><b>delete_MeetingTitle</b><br>Test class: Doocti107_Admin.Config_Deletion<br>Parameters: [Ljava.lang.String;@25232234</td>
+<td></td>
+<td>3</td>
+<td>Doocti107_Admin.Config_Deletion@2f953efd</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Deletion.delete_TicketStatus()'><b>delete_TicketStatus</b><br>Test class: Doocti107_Admin.Config_Deletion<br>Parameters: [Ljava.lang.String;@15d0cd8c</td>
+<td></td>
+<td>6</td>
+<td>Doocti107_Admin.Config_Deletion@2f953efd</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Deletion.delete_Dispo()'><b>delete_Dispo</b><br>Test class: Doocti107_Admin.Config_Deletion<br>Parameters: [Ljava.lang.String;@76a0e2af</td>
+<td></td>
+<td>7</td>
+<td>Doocti107_Admin.Config_Deletion@2f953efd</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Deletion.delete_LeadStatuswithclosed()'><b>delete_LeadStatuswithclosed</b><br>Test class: Doocti107_Admin.Config_Deletion<br>Parameters: [Ljava.lang.String;@634aceca</td>
+<td></td>
+<td>6</td>
+<td>Doocti107_Admin.Config_Deletion@2f953efd</td></tr>
+</table><p>
+</body>
+</html>

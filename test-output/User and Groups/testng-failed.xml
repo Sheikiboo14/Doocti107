@@ -3,19 +3,15 @@
 <suite name="Failed suite [User and Groups]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Creation Flow(failed)">
     <classes>
-      <class name="Doocti107.UserGroupCreatiom">
+      <class name="Doocti107_Admin.UserGroupCreation">
         <methods>
-          <include name="Openusergroup"/>
-          <include name="Create_Channel"/>
-          <include name="Create_Team"/>
-          <include name="Closeusergroup"/>
-          <include name="Create_Usergroup"/>
-          <include name="Create_Source"/>
-          <include name="Create_User"/>
+          <include name="Create_Usergroup" invocation-numbers="0"/>
+          <include name="Close_usergroup"/>
           <include name="setUp"/>
           <include name="setDown"/>
+          <include name="Open_usergroup"/>
         </methods>
-      </class> <!-- Doocti107.UserGroupCreatiom -->
+      </class> <!-- Doocti107_Admin.UserGroupCreation -->
     </classes>
   </test> <!-- Creation Flow(failed) -->
 </suite> <!-- Failed suite [User and Groups] -->

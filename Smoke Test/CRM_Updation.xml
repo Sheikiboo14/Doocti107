@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="CRM Suite">
+  <test thread-count="5" name="CRM Creation">
+    <classes>
+      <class name="../">
+		  <methods>
+			  <include name="Update_PreviewCampaign"/>
+			  <include name="Update_InboundCampaign"/>
+			  <include name="Update_PredictiveCampaign"/>
+			  <include name="Update_PowerCampaign"/>
+			  <include name="Update_VoiceCampaign"/>
+			    <!-- 	  <include name="create_List"/>
+			  <include name="upload_Contact"/>
+			  <include name="create_Meeting"/>
+		
+			  <include name="create_Lead"/>
+			  <include name="upload_Leads"/>
+			  <include name="upload_LeadswithoutAS"/>
+			  <include name="upload_LeadswithoutDA"/>
+			  <include name="upload_LeadswithoutAS"/>
+			  -->
+			<!--   <include name="create_Contact"/>
+			  <include name="create_Tickets"/>
+			   -->
+			</methods>
+	  </class>
+    </classes>
+  </test> <!-- CRM Creation -->
+</suite> <!-- CRM Suite -->

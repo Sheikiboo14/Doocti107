@@ -3,16 +3,19 @@
 <suite name="Failed suite [CRM Suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="CRM Creation(failed)">
     <classes>
-      <class name="Doocti107_Admin.CRM_Creation">
+      <class name="Doocti107_Admin.CRM_Updation">
         <methods>
-          <include name="create_Lead"/>
-          <include name="upload_Leads"/>
+          <include name="Update_InboundCampaign" invocation-numbers="0"/>
+          <include name="Close_CRM"/>
+          <include name="Update_PreviewCampaign" invocation-numbers="0"/>
+          <include name="Update_PowerCampaign" invocation-numbers="0"/>
+          <include name="Update_VoiceCampaign" invocation-numbers="0"/>
+          <include name="Update_PredictiveCampaign" invocation-numbers="0"/>
           <include name="setUp"/>
           <include name="setDown"/>
           <include name="Open_CRM"/>
-          <include name="Close_CRM"/>
         </methods>
-      </class> <!-- Doocti107_Admin.CRM_Creation -->
+      </class> <!-- Doocti107_Admin.CRM_Updation -->
     </classes>
   </test> <!-- CRM Creation(failed) -->
 </suite> <!-- Failed suite [CRM Suite] -->

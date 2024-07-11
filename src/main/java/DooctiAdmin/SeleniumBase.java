@@ -1,6 +1,7 @@
-package DooctiAdmin;
+ package DooctiAdmin;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertFalse;
 
 import java.awt.AWTException;
 import java.awt.Robot;
@@ -29,10 +30,9 @@ import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -51,32 +51,31 @@ public class SeleniumBase implements SeleniumInterface {
 	
 	Actions action = null;
 	
-	String Url = "http://localhost:8080/v2.1.106/";
+	String Url = "https://portal-test.doocti.com/v2.1.106/auth/login";
 	
-	String UserEmail = "testenv_admin@doocti.com";
+	String UserEmail = "v2testdoocti_admin@doocti.com";
 
 	String UserPassword = "Doocti@123";
 
 	
 
 
-	@BeforeTest
+	@BeforeSuite
 	public void setUp() {
 
 		browaerSetup(Url);
 		type(element(Locators.xpath, "//input[@aria-label='UserName']"), UserEmail);
 		type(element(Locators.xpath, "//input[@aria-label='Password']"), UserPassword);
 		click(element(Locators.xpath, "//div[text()='Login']"));
-		isDisplay(element(Locators.xpath, "//i[@title='Sign Out']"));
 
 	}
 	
-	@AfterTest
+	@AfterSuite
 	public void setDown() 
 	
 	{	
 		click(driver.findElement(By.xpath("//i[@title='Sign Out']")));
-		click(driver.findElement(By.xpath("//div[text()='OK']")));
+//		click(driver.findElement(By.xpath("//div[text()='OK']")));
 		quit();
 		 
 	}
@@ -455,7 +454,7 @@ public class SeleniumBase implements SeleniumInterface {
 	}
 	
 	
-	public void AssertwithFilterdropdown(WebElement ele,String actualVaule ,WebElement filterele) {
+	public void AssertwithFilterdropdown(WebElement ele,String actualVaule ,WebElement filterele, Boolean dropdown) {
 		
 		
 		WebElement element = wait.until(ExpectedConditions.visibilityOf(ele));
@@ -464,18 +463,125 @@ public class SeleniumBase implements SeleniumInterface {
 		
 		WebElement filterelement = wait.until(ExpectedConditions.visibilityOf(filterele));
 		
+		clear(filterelement);
+		
 		filterelement.sendKeys(actualVaule);
+		
+	if(dropdown == false) {
+		
+		
+
+		String expectedValue= filterele.getAttribute("value");
+		
+
+		
+		Assert.assertEquals(actualVaule, expectedValue,"Assert Failed" );
+		
+		
+//		click(element(Locators.xpath, "//i[@class='fas fa-close']"));
+		
+		click(element(Locators.xpath, "(//div[text()='Filter'])[2]"));
+		
+	}
+	else {
+		click(element(Locators.xpath,"//span[text()='"+actualVaule+"']"));
 				
-		driver.findElement(By.xpath("(//div[contains(@class,'container sidenavFooter')]//button)[2]"));
+
 		
-		boolean expectedValue = driver.findElement(By.xpath("//td[text()='"+actualVaule+"']")).isDisplayed();
+		String expectedValue= filterele.getAttribute("value");
 		
-		Assert.assertTrue(expectedValue, "Assert Failed");
+
+		
+		Assert.assertEquals(actualVaule, expectedValue,"Assert Failed" );
+		
+				
+		click(element(Locators.xpath, "(//div[text()='Filter'])[2]"));
+
+	}
+		
+	}
+	
+	public void refresh() {
+		
+		driver.navigate().refresh();
+	}
+	
+	public void clear(WebElement ele) {
+		
+		Actions action = new Actions(driver);
+		
+		action.doubleClick(ele)
+		.keyDown(Keys.BACK_SPACE)
+		.build().perform();
+		
+	}
+	
+	
+	public void configFilter(WebElement filtericon ,WebElement ele, String value, boolean DD) {
+		
+		WebElement filterelement = wait.until(ExpectedConditions.visibilityOf(filtericon));
+
+		filterelement.click();
+		
+		
+		WebElement element = wait.until(ExpectedConditions.visibilityOf(ele));
+		
+		clear(element);
+		
+		element.sendKeys(value);
+		
+		if(DD == true) {
+			
+			click(element(Locators.xpath,"//span[text()='"+value+"']"));
+
+		}
+		
+		click(element(Locators.xpath, "(//div[text()='Filter'])[2]"));
+
 		
 		
 		
 		
+	}
+	
+	
+	public void updateAssert(String value,String status) {
 		
+		
+		boolean actualValue = element(Locators.xpath,"//table//tr//td[text()='"+value+"']//following-sibling::td[text()='"+status+"']").isDisplayed();
+		
+		Assert.assertTrue(actualValue,"Status Updation Failed");
+		
+		
+	}
+	
+	
+	public void deleteAssert(String deletedValue) {
+		
+		
+		
+		
+		List<WebElement> Alldata = driver.findElements(By.xpath("//table//tr//td[1]"));
+		
+		
+		boolean flag = false;
+		
+		for(WebElement Data : Alldata) {
+			
+			String value = Data.getText();
+			
+			System.out.println(value);
+			if(value.contains(deletedValue))
+			{
+				
+			flag = true;
+			
+			}
+		}
+		
+		Assert.assertFalse(flag, "Deletion Failed..!");
+		
+
 	}
 //  		<============================================ Configuration Data's ==============================================>
 	
@@ -526,7 +632,7 @@ public class SeleniumBase implements SeleniumInterface {
 		String [][] sddata = new String[1][6];
 
 		sddata[0][0]="Test Action";
-		sddata[0][1]="Test SUb Dispo";
+		sddata[0][1]="Test Sub Dispo";
 		sddata[0][2]="Testing Purpose";
 		sddata[0][3] ="3";
 		sddata[0][4] ="2";
@@ -563,7 +669,7 @@ public class SeleniumBase implements SeleniumInterface {
 		ticketStatusdata[0][2]="3";
 		ticketStatusdata[0][3]="1";
 		ticketStatusdata[0][4]="Inactive";
-		ticketStatusdata[0][5]="Test Status Closed";
+		ticketStatusdata[0][5]="Test Closed";
 
 
 
@@ -593,11 +699,12 @@ public class SeleniumBase implements SeleniumInterface {
 	@DataProvider(name = "AudioData")
 	public String[][] audioData() {
 
-		String [][] audiodata = new String[1][3];
+		String [][] audiodata = new String[1][4];
 
 		audiodata[0][0]="Testing";
-		audiodata[0][1]="D:\\Test Audio.mp3";
+		audiodata[0][1]="C:\\Users\\admin\\Automation\\Doocti107_TestBuild\\Test Audio.mp3";
 		audiodata[0][2]="Inactive";
+		audiodata[0][3] ="Test_Audio.mp3";
 
 		return audiodata;
  
@@ -608,7 +715,7 @@ public class SeleniumBase implements SeleniumInterface {
 
 		String [][]blocklistdata = new String[1][3];
 
-		blocklistdata[0][0]= "D:\\Test_blocklist.csv";
+		blocklistdata[0][0]= "C:\\Users\\admin\\Automation\\Doocti107_TestBuild\\sample_blocklist.csv";
 		blocklistdata[0][1]= "1";
 		blocklistdata[0][2]="9090909091";
 
@@ -617,12 +724,12 @@ public class SeleniumBase implements SeleniumInterface {
 	}
 
 	
-	@DataProvider(name ="DNCData")
+	@DataProvider(name ="DNCData") 
 	public String[][] dncData(){
 	
 		String [][]dncData = new String[1][2];
 		
-		dncData[0][0] ="D:\\Test_dnc.csv";
+		dncData[0][0] ="C:\\Users\\admin\\Automation\\Doocti107_TestBuild\\sample_dnc.csv";
 		
 		return dncData;
 		
@@ -630,14 +737,16 @@ public class SeleniumBase implements SeleniumInterface {
 	@DataProvider(name = "DidData")
 	public String[][] didData() {
 
-		String [][]diddata = new String[1][6];
+		String [][]diddata = new String[1][7];
 
 		diddata[0][0]= "9876543210";
 		diddata[0][1] ="Test purpose";
-		diddata[0][2] ="D:\\Test_did.csv";
+		diddata[0][2] ="C:\\Users\\admin\\Automation\\Doocti107_TestBuild\\sample_did.csv";
 		diddata[0][3] ="4";
 		diddata[0][4] ="2";
 		diddata[0][5] ="Inactive";
+		diddata[0][6] ="No";
+
 
 
 		return diddata;
@@ -664,14 +773,16 @@ public class SeleniumBase implements SeleniumInterface {
 	@DataProvider(name = "AnnouncementData")
 	public String[][] announcementData() {
 
-		String [][]announcementdata = new String[1][6];
+		String [][]announcementdata = new String[1][7];
 
 		announcementdata[0][0]= "Testing";
-		announcementdata[0][1] ="Test purpose";
-		announcementdata[0][2] ="Preview Campaign";
+		announcementdata[0][1] ="Test Purpose";
+		announcementdata[0][2] ="Test Preview";
 		announcementdata[0][3] ="3";
 		announcementdata[0][4] ="1";
 		announcementdata[0][5] ="Inactive";
+		announcementdata[0][6] ="Test Preview Campaign";
+
 
 
 		return announcementdata;
@@ -707,7 +818,7 @@ public class SeleniumBase implements SeleniumInterface {
 		scriptdata[0][0]= "Testing Script URL";
 		scriptdata[0][1]= "Testing Script Text";
 		scriptdata[0][2] ="Test purpose";
-		scriptdata[0][3] ="https://console-v2.doocti.com/v2.1.106/configurations/Script";
+		scriptdata[0][3] ="https://tevatel.com/";
 		scriptdata[0][4] ="Hello Tevatel";
 		scriptdata[0][5] ="URL";
 		scriptdata[0][6] ="3";
@@ -721,7 +832,7 @@ public class SeleniumBase implements SeleniumInterface {
 	@DataProvider(name = "SLAData")
 	public String[][] SLAData() {
 		
-		String [][]slaData = new String [1][6];
+		String [][]slaData = new String [1][7];
 		
 		slaData[0][0] ="Test SLA";
 		slaData[0][1] ="Testing";
@@ -729,6 +840,8 @@ public class SeleniumBase implements SeleniumInterface {
 		slaData[0][3] ="Create";
 		slaData[0][4] ="0";
 		slaData[0][5] ="30";
+		slaData[0][6] ="Update";
+
 		
 		return slaData;
 
@@ -739,11 +852,14 @@ public class SeleniumBase implements SeleniumInterface {
 	@DataProvider(name="SchedulerData")
 	public String[][] SchedulerData() {
 		
-		String [][] schedulerdata = new String [1][3];
+		String [][] schedulerdata = new String [1][4];
 		
 		schedulerdata[0][0] = "Test Schedule";
 		schedulerdata[0][1] = "Testing";
 		schedulerdata[0][2] = "Test@doocti.com";
+		schedulerdata[0][3] = "Inactive";
+
+
 		
 		return schedulerdata;
 	}
@@ -751,7 +867,7 @@ public class SeleniumBase implements SeleniumInterface {
 	@DataProvider(name = "InboundData")
 	public String[][] inboundData() {
 
-		String [][]inbounddata = new String[1][7];
+		String [][]inbounddata = new String[1][9];
 
 		inbounddata[0][0]= "123";
 		inbounddata[0][1] ="Testing Inbound";
@@ -759,7 +875,12 @@ public class SeleniumBase implements SeleniumInterface {
 		inbounddata[0][3] ="Test_Queue";
 		inbounddata[0][4] ="3";
 		inbounddata[0][5] ="1";
-		inbounddata[0][6] ="1234";
+		inbounddata[0][6] ="456";
+		
+		inbounddata[0][7] ="user";
+
+		inbounddata[0][8] ="v2testdoocti_agent01@doocti.com";
+
 
 
 
@@ -809,14 +930,17 @@ public class SeleniumBase implements SeleniumInterface {
 	@DataProvider(name = "NotiData")
 	public String[][] NotiData() {
 		
-		String[][]notidata = new String[1][6];
+		String[][]notidata = new String[1][7];
 		
 		notidata[0][0] ="Test Noti";
 		notidata[0][1] ="Lead";
-		notidata[0][2] ="LeadTest";
+		notidata[0][2] ="Test_Template";
 		notidata[0][3] ="SMS";
 		notidata[0][4] ="Testing";
 		notidata[0][5] ="Caller";
+		notidata[0][6] ="Inactive";
+
+
 		
 		return notidata;
 
@@ -828,8 +952,8 @@ public class SeleniumBase implements SeleniumInterface {
 		
 		String[][]syssetdata = new String[1][2];
 		
-		syssetdata[0][0] ="Serial";
-		syssetdata[0][1] ="Serial";
+		syssetdata[0][0] ="Serial DateTime";
+		syssetdata[0][1] ="Serial DateTime";
 
 		
 		return syssetdata;
@@ -863,9 +987,11 @@ public class SeleniumBase implements SeleniumInterface {
 	@DataProvider(name= "UserGroupData")
 	public String[][] usergroupData() {
 
-		String[][] usergroupdata = new String[1][1];
+		String[][] usergroupdata = new String[1][2];
 
 		usergroupdata[0][0] = "Test";
+		usergroupdata[0][1] = "Test1";
+
 
 
 		return usergroupdata;
@@ -876,13 +1002,13 @@ public class SeleniumBase implements SeleniumInterface {
 
 		String[][] userdata = new String[1][13];
 
-		userdata[0][0] = "testenv_agent21";
+		userdata[0][0] = "v2testdoocti_agent22";
 		userdata[0][1] = "Testing Purpose";
 		userdata[0][2] = "376";
-		userdata[0][3] = "test21@doocti.com";
+		userdata[0][3] = "v2testdoocti_agent22@doocti.com";
 		userdata[0][4] = "Doocti@123";
 		userdata[0][5] = "Agent";
-		userdata[0][6] = "testenv_admin";
+		userdata[0][6] = "Test";
 
 		//Create and Delete Assert & Edit and Delete	
 
@@ -893,7 +1019,7 @@ public class SeleniumBase implements SeleniumInterface {
 		userdata[0][8] = "Demo";
 		userdata[0][9] = "377";
 		userdata[0][10] = "Administrator";
-		userdata[0][11] = "developv2_admin";
+		userdata[0][11] = "v2testdoocti_admin";
 		userdata[0][12] = "Inactive";
 
 
@@ -970,7 +1096,7 @@ public class SeleniumBase implements SeleniumInterface {
 		teamdata[0][3] ="Test Source";
 		teamdata[0][4] ="Test Channel";
 		teamdata[0][5] ="Test Preview Campaign";
-		teamdata[0][6] ="test21@doocti.com";
+		teamdata[0][6] ="v2testdoocti_agent02@doocti.com";
 
 		//Create and Delete Assertion Data
 
@@ -1005,17 +1131,17 @@ public class SeleniumBase implements SeleniumInterface {
 	@DataProvider(name = "CampaignData")
 	public String[][] campaigndata() {
 
-		String [][]campaigndata = new String [1][23];
+		String [][]campaigndata = new String [1][24];
 
-		campaigndata[0][0] = "Test Preview Campaign";
-		campaigndata[0][1] = "8633537829";
+		campaigndata[0][0] = "Test Preview Campaign1";
+		campaigndata[0][1] = "8633544661";
 		campaigndata[0][2] = "IT";
-		campaigndata[0][3] = "LeadTest";
-		campaigndata[0][4] = "testenv_8633537829";
+		campaigndata[0][3] = "Test_Template";
+		campaigndata[0][4] = "v2testdoocti_8633544661";
 		campaigndata[0][5] = "500";
 		campaigndata[0][6] = "1.2";
 		campaigndata[0][7] = "10";
-		campaigndata[0][8] = "Testing";
+		campaigndata[0][8] = "Demo";
 		campaigndata[0][9] = "5";
 		campaigndata[0][10] = "9876543120";
 		campaigndata[0][11] = "Text";	
@@ -1036,6 +1162,8 @@ public class SeleniumBase implements SeleniumInterface {
 		// Edit Assert data
 		
 		campaigndata[0][22] = "No";
+		campaigndata[0][23] = "INACTIVE";
+
 
 		
 		
@@ -1052,11 +1180,11 @@ public class SeleniumBase implements SeleniumInterface {
 		meetingdata[0][0] ="Decision-making meeting";
 		meetingdata[0][1] ="Testing";
 		meetingdata[0][2] ="9514380497";
-		meetingdata[0][3] ="testenv_agent02@doocti.com";
+		meetingdata[0][3] ="v2testdoocti_agent02@doocti.com";
 		meetingdata[0][4] ="11";
 		meetingdata[0][5] ="lead";
 		meetingdata[0][6] ="Testing";
-		meetingdata[0][7] ="LeadTest";
+		meetingdata[0][7] ="Test_Template";
 
 		
 		return meetingdata;
@@ -1069,8 +1197,8 @@ public class SeleniumBase implements SeleniumInterface {
 		
 		String[][]listdata = new String [1][5];
 		
-		listdata[0][0] ="12345678";
-		listdata[0][1] ="Test List";
+		listdata[0][0] ="4321";
+		listdata[0][1] ="Test 4321";
 		listdata[0][2] ="Testing";
 		listdata[0][3] ="Test Preview Campaign";
 		listdata[0][4] ="6";
@@ -1090,8 +1218,8 @@ public class SeleniumBase implements SeleniumInterface {
 		
 		leaddata[0][0] ="12345678";
 		leaddata[0][1] ="D:\\\\onelead.csv";
-		leaddata[0][2] ="LeadTest";
-		leaddata[0][3] ="9999990000";
+		leaddata[0][2] ="Test_Template";
+		leaddata[0][3] ="9514380497";
 		leaddata[0][4] ="testenv_agent05@doocti.com";
 		leaddata[0][5] ="Test Lead";
 		leaddata[0][6] ="Test Source";
@@ -1110,7 +1238,7 @@ public class SeleniumBase implements SeleniumInterface {
 		
 		contactdata[0][0] ="Test Contact";
 		contactdata[0][1] ="9898989898";
-		contactdata[0][2] ="D:\\\\contact_Test.csv";
+		contactdata[0][2] ="C:\\Users\\admin\\Automation\\Doocti107_TestBuild\\samplefile.csv";
 
 		
 		return contactdata;

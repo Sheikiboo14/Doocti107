@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [CRM Suite (0)]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="CRM Creation(failed)">
+    <classes>
+      <class name="Doocti107_Admin.CRM_Updation">
+        <methods>
+          <include name="Close_CRM"/>
+          <include name="Update_PreviewCampaign" invocation-numbers="0"/>
+          <include name="setUp"/>
+          <include name="setDown"/>
+          <include name="Open_CRM"/>
+        </methods>
+      </class> <!-- Doocti107_Admin.CRM_Updation -->
+    </classes>
+  </test> <!-- CRM Creation(failed) -->
+</suite> <!-- Failed suite [CRM Suite (0)] -->

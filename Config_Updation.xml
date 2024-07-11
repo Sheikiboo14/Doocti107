@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Config_Update">
+  <test thread-count="5" name="Test">
+    <classes>
+      <class name="Doocti107_Admin.Config_Update">
+      <methods>
+      
+			  <include name="Update_Dispo"/>
+			  <include name="update_SubDispo"/>
+			  <include name="Update_Dispowithaction"/>
+			  
+			  <include name="update_LeadStatus"/>
+			  <include name="update_TicketStatus"/>
+			  <include name="update_LeadStatuswithclosed"/>
+			  <include name="update_TicketStatuswithclosed"/>
+
+			  <include name="update_Pausecode"/>
+			  <include name="update_DID"/>
+			  <include name="update_Tag"/>
+			  <include name="update_Announcement"/>
+			  <include name="update_ScriptURL"/>
+			  <include name="update_Inbound"/>
+			   <include name="update_ScriptText"/>
+
+
+			  <include name="update_Inbound"/>
+			  <include name="update_Inboundwithblk"/>
+			  
+			  
+			  <include name="update_TimeZone"/>
+			  <include name="update_MeetingTitle"/>
+			  
+      
+      </methods>
+      </class>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Config_Update -->

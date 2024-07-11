@@ -1,0 +1,194 @@
+<html>
+<head>
+<title>TestNG:  Test</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>Test</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>23/0/0</td>
+</tr><tr>
+<td>Started on:</td><td>Thu Jul 11 12:27:01 IST 2024</td>
+</tr>
+<tr><td>Total time:</td><td>92 seconds (92718 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='Doocti107_Admin.Config_Createion.upload_Blocklist()'><b>upload_Blocklist</b><br>Test class: Doocti107_Admin.Config_Createion<br>Parameters: [Ljava.lang.String;@3abadb65</td>
+<td></td>
+<td>2</td>
+<td>Doocti107_Admin.Config_Createion@6d60fe40</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Createion.upload_DID()'><b>upload_DID</b><br>Test class: Doocti107_Admin.Config_Createion<br>Parameters: [Ljava.lang.String;@7131d668</td>
+<td></td>
+<td>2</td>
+<td>Doocti107_Admin.Config_Createion@6d60fe40</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Createion.create_ScriptText()'><b>create_ScriptText</b><br>Test class: Doocti107_Admin.Config_Createion<br>Parameters: [Ljava.lang.String;@46a97805</td>
+<td></td>
+<td>4</td>
+<td>Doocti107_Admin.Config_Createion@6d60fe40</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Createion.create_InboundwithoutBlklist()'><b>create_InboundwithoutBlklist</b><br>Test class: Doocti107_Admin.Config_Createion<br>Parameters: [Ljava.lang.String;@667dd150</td>
+<td></td>
+<td>3</td>
+<td>Doocti107_Admin.Config_Createion@6d60fe40</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Createion.create_SystemSettingDataTicket()'><b>create_SystemSettingDataTicket</b><br>Test class: Doocti107_Admin.Config_Createion<br>Parameters: [Ljava.lang.String;@af04f09</td>
+<td></td>
+<td>1</td>
+<td>Doocti107_Admin.Config_Createion@6d60fe40</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Createion.create_TicketStatuswithClosed()'><b>create_TicketStatuswithClosed</b><br>Test class: Doocti107_Admin.Config_Createion<br>Parameters: [Ljava.lang.String;@758d4aa9</td>
+<td></td>
+<td>3</td>
+<td>Doocti107_Admin.Config_Createion@6d60fe40</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Createion.create_LeadStatuswithoutClosed()'><b>create_LeadStatuswithoutClosed</b><br>Test class: Doocti107_Admin.Config_Createion<br>Parameters: [Ljava.lang.String;@78e97d4d</td>
+<td></td>
+<td>3</td>
+<td>Doocti107_Admin.Config_Createion@6d60fe40</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Createion.create_SystemSettingDataLead()'><b>create_SystemSettingDataLead</b><br>Test class: Doocti107_Admin.Config_Createion<br>Parameters: [Ljava.lang.String;@7096d451</td>
+<td></td>
+<td>1</td>
+<td>Doocti107_Admin.Config_Createion@6d60fe40</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Createion.create_DispowithAction()'><b>create_DispowithAction</b><br>Test class: Doocti107_Admin.Config_Createion<br>Parameters: [Ljava.lang.String;@7816454d</td>
+<td></td>
+<td>4</td>
+<td>Doocti107_Admin.Config_Createion@6d60fe40</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Createion.create_TimeZone()'><b>create_TimeZone</b><br>Test class: Doocti107_Admin.Config_Createion<br>Parameters: [Ljava.lang.String;@67d180e4</td>
+<td></td>
+<td>7</td>
+<td>Doocti107_Admin.Config_Createion@6d60fe40</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Createion.create_ScriptURL()'><b>create_ScriptURL</b><br>Test class: Doocti107_Admin.Config_Createion<br>Parameters: [Ljava.lang.String;@54e18a46</td>
+<td></td>
+<td>4</td>
+<td>Doocti107_Admin.Config_Createion@6d60fe40</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Createion.create_MeetingTitle()'><b>create_MeetingTitle</b><br>Test class: Doocti107_Admin.Config_Createion<br>Parameters: [Ljava.lang.String;@1293f8d7</td>
+<td></td>
+<td>3</td>
+<td>Doocti107_Admin.Config_Createion@6d60fe40</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Createion.create_LeadStatuswithClosed()'><b>create_LeadStatuswithClosed</b><br>Test class: Doocti107_Admin.Config_Createion<br>Parameters: [Ljava.lang.String;@58e5fbe5</td>
+<td></td>
+<td>3</td>
+<td>Doocti107_Admin.Config_Createion@6d60fe40</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Createion.upload_DNC()'><b>upload_DNC</b><br>Test class: Doocti107_Admin.Config_Createion<br>Parameters: [Ljava.lang.String;@335896bd</td>
+<td></td>
+<td>2</td>
+<td>Doocti107_Admin.Config_Createion@6d60fe40</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Createion.create_Tag()'><b>create_Tag</b><br>Test class: Doocti107_Admin.Config_Createion<br>Parameters: [Ljava.lang.String;@6b33892a</td>
+<td></td>
+<td>3</td>
+<td>Doocti107_Admin.Config_Createion@6d60fe40</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Createion.create_Queue()'><b>create_Queue</b><br>Test class: Doocti107_Admin.Config_Createion<br>Parameters: [Ljava.lang.String;@666b91db</td>
+<td></td>
+<td>4</td>
+<td>Doocti107_Admin.Config_Createion@6d60fe40</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Createion.create_Announcement()'><b>create_Announcement</b><br>Test class: Doocti107_Admin.Config_Createion<br>Parameters: [Ljava.lang.String;@11a67420</td>
+<td></td>
+<td>4</td>
+<td>Doocti107_Admin.Config_Createion@6d60fe40</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Createion.create_DID()'><b>create_DID</b><br>Test class: Doocti107_Admin.Config_Createion<br>Parameters: [Ljava.lang.String;@663cf5d7</td>
+<td></td>
+<td>3</td>
+<td>Doocti107_Admin.Config_Createion@6d60fe40</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Createion.create_Subdispo()'><b>create_Subdispo</b><br>Test class: Doocti107_Admin.Config_Createion<br>Parameters: [Ljava.lang.String;@11b14ae3</td>
+<td></td>
+<td>4</td>
+<td>Doocti107_Admin.Config_Createion@6d60fe40</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Createion.create_PauseCode()'><b>create_PauseCode</b><br>Test class: Doocti107_Admin.Config_Createion<br>Parameters: [Ljava.lang.String;@2b6ee447</td>
+<td></td>
+<td>4</td>
+<td>Doocti107_Admin.Config_Createion@6d60fe40</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Createion.create_TicketStatuswithoutClosed()'><b>create_TicketStatuswithoutClosed</b><br>Test class: Doocti107_Admin.Config_Createion<br>Parameters: [Ljava.lang.String;@9cb927e</td>
+<td></td>
+<td>3</td>
+<td>Doocti107_Admin.Config_Createion@6d60fe40</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Createion.create_DispowithoutAction()'><b>create_DispowithoutAction</b><br>Test class: Doocti107_Admin.Config_Createion<br>Parameters: [Ljava.lang.String;@8585cdd</td>
+<td></td>
+<td>3</td>
+<td>Doocti107_Admin.Config_Createion@6d60fe40</td></tr>
+<tr>
+<td title='Doocti107_Admin.Config_Createion.create_InboundwithBlklist()'><b>create_InboundwithBlklist</b><br>Test class: Doocti107_Admin.Config_Createion<br>Parameters: [Ljava.lang.String;@1325f967</td>
+<td></td>
+<td>4</td>
+<td>Doocti107_Admin.Config_Createion@6d60fe40</td></tr>
+</table><p>
+</body>
+</html>

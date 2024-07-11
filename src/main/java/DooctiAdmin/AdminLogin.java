@@ -20,9 +20,9 @@ public class AdminLogin {
 	
 	WebDriverWait wait = null;
 
-	String Admin_URL ="http://localhost:8080/v2.1.106/";
+	String Admin_URL ="https://portal-test.doocti.com/v2.1.106/auth/login";
 	
-	String UserName = "testenv_admin@doocti.com";
+	String UserName = "v2testdoocti_admin@doocti.com";
 	
 	String Password ="Doocti@123";
 	

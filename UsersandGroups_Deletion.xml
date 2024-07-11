@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="User and Groups">
+  <test thread-count="5" name="Creation Flow">
+    <classes>
+      <class name="Doocti107_Admin.UserGroupDelete">
+		  <methods>
+			  
+	 		  <include name="Delete_Usergroup"/>
+			  <include name="Delete_User"/>
+			  <include name="Delete_Team"/>
+			  <include name="Delete_Channel"/>
+			  <include name="Delete_Source"/>
+		  </methods>
+	  </class>
+     
+    </classes>
+  </test> <!-- Creation Flow -->
+</suite> <!-- User and Groups -->

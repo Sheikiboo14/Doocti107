@@ -1,28 +1,29 @@
 package Doocti107_Admin;
 
-import org.testng.annotations.Test;
 import java.awt.AWTException;
-import java.util.concurrent.ThreadLocalRandom;
+import java.time.Duration;
 
+import org.doocti.seleniumEnum.Locators;
 import org.openqa.selenium.By;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.DataProvider;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import DooctiAdmin.SeleniumBase;
-
+ 
 public class CRM_Creation extends SeleniumBase {
 
 
-	@BeforeMethod
+	@BeforeClass
 	public void Open_CRM() {
 
 		click(driver.findElement(By.xpath("//div[text()='CRM']")));
 
 	}
 
-	@AfterMethod
+	@AfterClass
 	public void Close_CRM() {
 
 		click(driver.findElement(By.xpath("//div[text()='CRM']")));
@@ -36,14 +37,22 @@ public class CRM_Creation extends SeleniumBase {
 		click(driver.findElement(By.xpath("//span[text()='Campaigns']")));
 		click(driver.findElement(By.xpath("//div[text()=' Add Campaign ']")));
 		type(driver.findElement(By.xpath("(//input[@aria-label='Name'])[2]")), CampaignData[0]);
-		click(driver.findElement(By.xpath("(//input[@aria-label='Process'])[2]")));
+		
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		click(driver.findElement(By.xpath("(//label[text()='Type']/following-sibling::div)[3]")));
+		click(driver.findElement(By.xpath("(//div[text()='PREVIEW'])[3]")));
+		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
+		click(driver.findElement(By.xpath("(//label[text()='Process']/following-sibling::div)[3]")));
 		click(driver.findElement(By.xpath("(//div[text()='Leads'])[2]")));
 		click(driver.findElement(By.xpath("(//div[text()='Tickets'])[2]")));
 		click(driver.findElement(By.xpath("(//div[text()='Meetings'])[2]")));
 		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
-		click(driver.findElement(By.xpath("(//label[text()='Type']/following-sibling::div)[3]")));
-		click(driver.findElement(By.xpath("(//div[text()='PREVIEW'])[3]")));
-		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
+	
 		click(driver.findElement(By.xpath("(//input[@aria-label='Outbound Caller ID'])[2]")));
 		click(driver.findElement(By.xpath("(//div[text()='"+CampaignData[1]+"'])[2]")));
 		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
@@ -62,18 +71,18 @@ public class CRM_Creation extends SeleniumBase {
 		click(driver.findElement(By.xpath("(//div[text()='Tea Break'])[2]")));
 		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
 		click(driver.findElement(By.xpath("(//input[@aria-label='Dial Status'])[2]")));
-		click(driver.findElement(By.xpath("(//div[@class='v-list__tile__title'][normalize-space()='Action'])[4]")));
-		click(driver.findElement(By.xpath("(//div[@class='v-list__tile__title'][normalize-space()='Interested'])[4]")));
+		click(driver.findElement(By.xpath("(//div[@class='v-list__tile__title'][normalize-space()='ANSWER'])[4]")));
+		click(driver.findElement(By.xpath("(//div[@class='v-list__tile__title'][normalize-space()='CALLBACK'])[4]")));
 		click(driver.findElement(By.xpath("(//div[@class='v-list__tile__title'][normalize-space()='Not Interested'])[4]")));
 		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
 		click(driver.findElement(By.xpath("(//input[@aria-label='Dispo Status'])[2]")));
-		click(driver.findElement(By.xpath("(//div[text()='Action'])[3]")));
-		click(driver.findElement(By.xpath("(//div[text()='Interested'])[3]")));
+		click(driver.findElement(By.xpath("(//div[text()='ANSWER'])[3]")));
+		click(driver.findElement(By.xpath("(//div[text()='CALLBACK'])[3]")));
 		click(driver.findElement(By.xpath("(//div[text()='Not Interested'])[3]")));
 		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
-		click(driver.findElement(By.xpath("(//input[@aria-label='Inbound'])[2]")));
-		click(driver.findElement(By.xpath("(//div[text()='"+CampaignData[10]+"'])[2]")));
-		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
+//		click(driver.findElement(By.xpath("(//input[@aria-label='Inbound'])[2]")));
+//		click(driver.findElement(By.xpath("(//div[text()='"+CampaignData[10]+"'])[2]")));
+//		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
 		click(driver.findElement(By.xpath("(//label[text()='Script_name']/following-sibling::div)[3]")));
 		click(driver.findElement(By.xpath("(//div[text()='"+CampaignData[8]+"'])[2]")));
 		click(driver.findElement(By.xpath("//div[text()='Create']")));
@@ -83,18 +92,25 @@ public class CRM_Creation extends SeleniumBase {
 
 
 	@Test(dataProvider = "CampaignData")
-	public void Create_InboundCampaign(String CampaignData[]) {
+	public void Create_InboundCampaign(String CampaignData[]) throws InterruptedException {
 
 		click(driver.findElement(By.xpath("//span[text()='Campaigns']")));
 		click(driver.findElement(By.xpath("//div[text()=' Add Campaign ']")));
 		type(driver.findElement(By.xpath("(//input[@aria-label='Name'])[2]")), CampaignData[13]);
-		click(driver.findElement(By.xpath("(//input[@aria-label='Process'])[2]")));
+		
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		click(driver.findElement(By.xpath("(//label[text()='Type']/following-sibling::div)[3]")));
+		click(driver.findElement(By.xpath("(//div[text()='INBOUND'])[3]")));
+		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
+		click(driver.findElement(By.xpath("(//label[text()='Process']/following-sibling::div)[3]")));
 		click(driver.findElement(By.xpath("(//div[text()='Leads'])[2]")));
 		click(driver.findElement(By.xpath("(//div[text()='Tickets'])[2]")));
 		click(driver.findElement(By.xpath("(//div[text()='Meetings'])[2]")));
-		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
-		click(driver.findElement(By.xpath("(//label[text()='Type']/following-sibling::div)[3]")));
-		click(driver.findElement(By.xpath("(//div[text()='INBOUND'])[3]")));
 		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
 		click(driver.findElement(By.xpath("(//input[@aria-label='Outbound Caller ID'])[2]")));
 		click(driver.findElement(By.xpath("(//div[text()='"+CampaignData[1]+"'])[2]")));
@@ -106,7 +122,7 @@ public class CRM_Creation extends SeleniumBase {
 		click(driver.findElement(By.xpath("//div[text()='"+CampaignData[3]+"']")));
 		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
 		click(driver.findElement(By.xpath("(//input[@aria-label='Add Queue'])[2]")));
-		click(driver.findElement(By.xpath("//div[text()='"+CampaignData[4]+"']")));
+		click(driver.findElement(By.xpath("(//div[text()='"+CampaignData[4]+"'])[2]")));
 		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
 		click(driver.findElement(By.xpath("(//input[@aria-label='Pause Code'])[2]")));
 		click(driver.findElement(By.xpath("(//div[text()='Meeting'])[2]")));
@@ -114,18 +130,18 @@ public class CRM_Creation extends SeleniumBase {
 		click(driver.findElement(By.xpath("(//div[text()='Tea Break'])[2]")));
 		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
 		click(driver.findElement(By.xpath("(//input[@aria-label='Dial Status'])[2]")));
-		click(driver.findElement(By.xpath("(//div[@class='v-list__tile__title'][normalize-space()='Action'])[4]")));
-		click(driver.findElement(By.xpath("(//div[@class='v-list__tile__title'][normalize-space()='Interested'])[4]")));
+		click(driver.findElement(By.xpath("(//div[@class='v-list__tile__title'][normalize-space()='ANSWER'])[4]")));
+		click(driver.findElement(By.xpath("(//div[@class='v-list__tile__title'][normalize-space()='CALLBACK'])[4]")));
 		click(driver.findElement(By.xpath("(//div[@class='v-list__tile__title'][normalize-space()='Not Interested'])[4]")));
 		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
 		click(driver.findElement(By.xpath("(//input[@aria-label='Dispo Status'])[2]")));
-		click(driver.findElement(By.xpath("(//div[text()='Action'])[3]")));
-		click(driver.findElement(By.xpath("(//div[text()='Interested'])[3]")));
+		click(driver.findElement(By.xpath("(//div[text()='ANSWER'])[3]")));
+		click(driver.findElement(By.xpath("(//div[text()='CALLBACK'])[3]")));
 		click(driver.findElement(By.xpath("(//div[text()='Not Interested'])[3]")));
 		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
-		click(driver.findElement(By.xpath("(//input[@aria-label='Inbound'])[2]")));
-		click(driver.findElement(By.xpath("(//div[text()='"+CampaignData[10]+"'])[2]")));
-		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
+//		click(driver.findElement(By.xpath("(//input[@aria-label='Inbound'])[2]")));
+//		click(driver.findElement(By.xpath("(//div[text()='"+CampaignData[10]+"'])[2]")));
+//		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
 		click(driver.findElement(By.xpath("(//label[text()='Script_name']/following-sibling::div)[3]")));
 		click(driver.findElement(By.xpath("(//div[text()='"+CampaignData[8]+"'])[2]")));
 		click(driver.findElement(By.xpath("//div[text()='Create']")));
@@ -139,13 +155,20 @@ public class CRM_Creation extends SeleniumBase {
 		click(driver.findElement(By.xpath("//span[text()='Campaigns']")));
 		click(driver.findElement(By.xpath("//div[text()=' Add Campaign ']")));
 		type(driver.findElement(By.xpath("(//input[@aria-label='Name'])[2]")), CampaignData[12]);
-		click(driver.findElement(By.xpath("(//input[@aria-label='Process'])[2]")));
+		
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		click(driver.findElement(By.xpath("(//label[text()='Type']/following-sibling::div)[3]")));
+		click(driver.findElement(By.xpath("(//div[text()='PREDICTIVE'])[3]")));
+		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
+		click(driver.findElement(By.xpath("(//label[text()='Process']/following-sibling::div)[3]")));
 		click(driver.findElement(By.xpath("(//div[text()='Leads'])[2]")));
 		click(driver.findElement(By.xpath("(//div[text()='Tickets'])[2]")));
 		click(driver.findElement(By.xpath("(//div[text()='Meetings'])[2]")));
-		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
-		click(driver.findElement(By.xpath("(//label[text()='Type']/following-sibling::div)[3]")));
-		click(driver.findElement(By.xpath("(//div[text()='PREDICTIVE'])[3]")));
 		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
 		click(driver.findElement(By.xpath("(//input[@aria-label='Outbound Caller ID'])[2]")));
 		click(driver.findElement(By.xpath("(//div[text()='"+CampaignData[1]+"'])[2]")));
@@ -154,7 +177,7 @@ public class CRM_Creation extends SeleniumBase {
 		click(driver.findElement(By.xpath("(//div[text()='IT'])[2]")));
 		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
 		click(driver.findElement(By.xpath("(//label[text()='Template Name']/following-sibling::div)[3]")));
-		click(driver.findElement(By.xpath("(//div[text()='"+CampaignData[3]+"'])[2]")));
+		click(driver.findElement(By.xpath("//div[text()='"+CampaignData[3]+"']")));
 		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
 		click(driver.findElement(By.xpath("(//input[@aria-label='Add Queue'])[2]")));
 		click(driver.findElement(By.xpath("(//div[text()='"+CampaignData[4]+"'])[2]")));
@@ -165,13 +188,13 @@ public class CRM_Creation extends SeleniumBase {
 		click(driver.findElement(By.xpath("(//div[text()='Tea Break'])[2]")));
 		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
 		click(driver.findElement(By.xpath("(//input[@aria-label='Dial Status'])[2]")));
-		click(driver.findElement(By.xpath("(//div[@class='v-list__tile__title'][normalize-space()='Action'])[4]")));
-		click(driver.findElement(By.xpath("(//div[@class='v-list__tile__title'][normalize-space()='Interested'])[4]")));
+		click(driver.findElement(By.xpath("(//div[@class='v-list__tile__title'][normalize-space()='ANSWER'])[4]")));
+		click(driver.findElement(By.xpath("(//div[@class='v-list__tile__title'][normalize-space()='CALLBACK'])[4]")));
 		click(driver.findElement(By.xpath("(//div[@class='v-list__tile__title'][normalize-space()='Not Interested'])[4]")));
 		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
 		click(driver.findElement(By.xpath("(//input[@aria-label='Dispo Status'])[2]")));
-		click(driver.findElement(By.xpath("(//div[text()='Action'])[3]")));
-		click(driver.findElement(By.xpath("(//div[text()='Interested'])[3]")));
+		click(driver.findElement(By.xpath("(//div[text()='ANSWER'])[3]")));
+		click(driver.findElement(By.xpath("(//div[text()='CALLBACK'])[3]")));
 		click(driver.findElement(By.xpath("(//div[text()='Not Interested'])[3]")));
 		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
 		click(driver.findElement(By.xpath("//label[text()='Buffer Level']/following-sibling::div")));
@@ -180,9 +203,9 @@ public class CRM_Creation extends SeleniumBase {
 		click(driver.findElement(By.xpath("//label[text()='Dial Ratio']/following-sibling::div")));
 		click(driver.findElement(By.xpath("(//div[text()='"+CampaignData[6]+"'])[1]")));
 		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
-		click(driver.findElement(By.xpath("(//input[@aria-label='Inbound'])[2]")));
-		click(driver.findElement(By.xpath("(//div[text()='"+CampaignData[10]+"'])[2]")));
-		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
+//		click(driver.findElement(By.xpath("(//input[@aria-label='Inbound'])[2]")));
+//		click(driver.findElement(By.xpath("(//div[text()='"+CampaignData[10]+"'])[2]")));
+//		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
 		click(driver.findElement(By.xpath("(//label[text()='Script_name']/following-sibling::div)[3]")));
 		click(driver.findElement(By.xpath("(//div[text()='"+CampaignData[8]+"'])[2]")));
 		click(driver.findElement(By.xpath("//div[text()='Create']")));
@@ -196,13 +219,22 @@ public class CRM_Creation extends SeleniumBase {
 		click(driver.findElement(By.xpath("//span[text()='Campaigns']")));
 		click(driver.findElement(By.xpath("//div[text()=' Add Campaign ']")));
 		type(driver.findElement(By.xpath("(//input[@aria-label='Name'])[2]")),CampaignData[15] );
-		click(driver.findElement(By.xpath("(//input[@aria-label='Process'])[2]")));
+		
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		click(driver.findElement(By.xpath("(//label[text()='Type']/following-sibling::div)[3]")));
+		click(driver.findElement(By.xpath("(//div[text()='POWER'])[3]")));
+		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
+		
+		click(driver.findElement(By.xpath("(//label[text()='Process']/following-sibling::div)[3]")));
 		click(driver.findElement(By.xpath("(//div[text()='Leads'])[2]")));
 		click(driver.findElement(By.xpath("(//div[text()='Tickets'])[2]")));
 		click(driver.findElement(By.xpath("(//div[text()='Meetings'])[2]")));
-		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
-		click(driver.findElement(By.xpath("(//label[text()='Type']/following-sibling::div)[3]")));
-		click(driver.findElement(By.xpath("(//div[text()='POWER'])[3]")));
 		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
 		click(driver.findElement(By.xpath("(//input[@aria-label='Outbound Caller ID'])[2]")));
 		click(driver.findElement(By.xpath("(//div[text()='"+CampaignData[1]+"'])[2]")));
@@ -211,7 +243,7 @@ public class CRM_Creation extends SeleniumBase {
 		click(driver.findElement(By.xpath("(//div[text()='IT'])[2]")));
 		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
 		click(driver.findElement(By.xpath("(//label[text()='Template Name']/following-sibling::div)[3]")));
-		click(driver.findElement(By.xpath("(//div[text()='"+CampaignData[3]+"'])[2]")));
+		click(driver.findElement(By.xpath("//div[text()='"+CampaignData[3]+"']")));
 		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
 		click(driver.findElement(By.xpath("(//input[@aria-label='Add Queue'])[2]")));
 		click(driver.findElement(By.xpath("(//div[text()='"+CampaignData[4]+"'])[2]")));
@@ -222,13 +254,13 @@ public class CRM_Creation extends SeleniumBase {
 		click(driver.findElement(By.xpath("(//div[text()='Tea Break'])[2]")));
 		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
 		click(driver.findElement(By.xpath("(//input[@aria-label='Dial Status'])[2]")));
-		click(driver.findElement(By.xpath("(//div[@class='v-list__tile__title'][normalize-space()='Action'])[4]")));
-		click(driver.findElement(By.xpath("(//div[@class='v-list__tile__title'][normalize-space()='Interested'])[4]")));
+		click(driver.findElement(By.xpath("(//div[@class='v-list__tile__title'][normalize-space()='ANSWER'])[4]")));
+		click(driver.findElement(By.xpath("(//div[@class='v-list__tile__title'][normalize-space()='CALLBACK'])[4]")));
 		click(driver.findElement(By.xpath("(//div[@class='v-list__tile__title'][normalize-space()='Not Interested'])[4]")));
 		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
 		click(driver.findElement(By.xpath("(//input[@aria-label='Dispo Status'])[2]")));
-		click(driver.findElement(By.xpath("(//div[text()='Action'])[3]")));
-		click(driver.findElement(By.xpath("(//div[text()='Interested'])[3]")));
+		click(driver.findElement(By.xpath("(//div[text()='ANSWER'])[3]")));
+		click(driver.findElement(By.xpath("(//div[text()='CALLBACK'])[3]")));
 		click(driver.findElement(By.xpath("(//div[text()='Not Interested'])[3]")));
 		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
 		click(driver.findElement(By.xpath("//label[text()='Buffer Level']/following-sibling::div")));
@@ -237,11 +269,11 @@ public class CRM_Creation extends SeleniumBase {
 		click(driver.findElement(By.xpath("//label[text()='Dial Ratio']/following-sibling::div")));
 		click(driver.findElement(By.xpath("(//div[text()='"+CampaignData[6]+"'])[1]")));
 		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
-		click(driver.findElement(By.xpath("(//input[@aria-label='Inbound'])[2]")));
-		click(driver.findElement(By.xpath("(//div[text()='"+CampaignData[10]+"'])[1]")));
-		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
+//		click(driver.findElement(By.xpath("(//input[@aria-label='Inbound'])[2]")));
+//		click(driver.findElement(By.xpath("(//div[text()='"+CampaignData[10]+"'])[1]")));
+//		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
 		click(driver.findElement(By.xpath("(//label[text()='Script_name']/following-sibling::div)[3]")));
-		click(driver.findElement(By.xpath("(//div[text()='"+CampaignData[8]+"'])[1]")));
+		click(driver.findElement(By.xpath("(//div[text()='"+CampaignData[8]+"'])[2]")));
 		click(driver.findElement(By.xpath("//div[text()='Create']")));
 		click(driver.findElement(By.xpath("(//div[@class='v-btn__content'][normalize-space()='Close'])[4]")));
 
@@ -254,7 +286,15 @@ public class CRM_Creation extends SeleniumBase {
 		click(driver.findElement(By.xpath("//span[text()='Campaigns']")));
 		click(driver.findElement(By.xpath("//div[text()=' Add Campaign ']")));
 		type(driver.findElement(By.xpath("(//input[@aria-label='Name'])[2]")), CampaignData[17]);
-		click(driver.findElement(By.xpath("(//input[@aria-label='Process'])[2]")));
+		
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		click(driver.findElement(By.xpath("(//label[text()='Process']/following-sibling::div)[3]")));
 		click(driver.findElement(By.xpath("(//div[text()='Leads'])[2]")));
 		click(driver.findElement(By.xpath("(//div[text()='Tickets'])[2]")));
 		click(driver.findElement(By.xpath("(//div[text()='Meetings'])[2]")));
@@ -262,6 +302,7 @@ public class CRM_Creation extends SeleniumBase {
 		click(driver.findElement(By.xpath("(//label[text()='Type']/following-sibling::div)[3]")));
 		click(driver.findElement(By.xpath("(//div[text()='VOICE BLAST'])[3]")));
 		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
+
 		click(driver.findElement(By.xpath("(//input[@aria-label='Outbound Caller ID'])[2]")));
 		click(driver.findElement(By.xpath("(//div[text()='"+CampaignData[1]+"'])[2]")));
 		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
@@ -269,7 +310,7 @@ public class CRM_Creation extends SeleniumBase {
 		click(driver.findElement(By.xpath("(//div[text()='IT'])[2]")));
 		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
 		click(driver.findElement(By.xpath("(//label[text()='Template Name']/following-sibling::div)[3]")));
-		click(driver.findElement(By.xpath("(//div[text()='"+CampaignData[3]+"'])[2]")));
+		click(driver.findElement(By.xpath("//div[text()='"+CampaignData[3]+"']")));
 		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
 		click(driver.findElement(By.xpath("(//input[@aria-label='Add Queue'])[2]")));
 		click(driver.findElement(By.xpath("(//div[text()='"+CampaignData[4]+"'])[2]")));
@@ -280,23 +321,23 @@ public class CRM_Creation extends SeleniumBase {
 		click(driver.findElement(By.xpath("(//div[text()='Tea Break'])[2]")));
 		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
 		click(driver.findElement(By.xpath("(//input[@aria-label='Dial Status'])[2]")));
-		click(driver.findElement(By.xpath("(//div[@class='v-list__tile__title'][normalize-space()='Action'])[4]")));
-		click(driver.findElement(By.xpath("(//div[@class='v-list__tile__title'][normalize-space()='Interested'])[4]")));
+		click(driver.findElement(By.xpath("(//div[@class='v-list__tile__title'][normalize-space()='ANSWER'])[4]")));
+		click(driver.findElement(By.xpath("(//div[@class='v-list__tile__title'][normalize-space()='CALLBACK'])[4]")));
 		click(driver.findElement(By.xpath("(//div[@class='v-list__tile__title'][normalize-space()='Not Interested'])[4]")));
 		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
 		click(driver.findElement(By.xpath("(//input[@aria-label='Dispo Status'])[2]")));
-		click(driver.findElement(By.xpath("(//div[text()='Action'])[3]")));
-		click(driver.findElement(By.xpath("(//div[text()='Interested'])[3]")));
+		click(driver.findElement(By.xpath("(//div[text()='ANSWER'])[3]")));
+		click(driver.findElement(By.xpath("(//div[text()='CALLBACK'])[3]")));
 		click(driver.findElement(By.xpath("(//div[text()='Not Interested'])[3]")));
 		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
 		click(driver.findElement(By.xpath("//label[text()='Buffer Level']/following-sibling::div")));
-		click(driver.findElement(By.xpath("(//div[text()='"+CampaignData[5]+"'])[2]")));
+		click(driver.findElement(By.xpath("(//div[text()='"+CampaignData[5]+"'])[1]")));
 		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
-		click(driver.findElement(By.xpath("(//input[@aria-label='Inbound'])[2]")));
-		click(driver.findElement(By.xpath("(//div[text()='"+CampaignData[10]+"'])[2]")));
-		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
+//		click(driver.findElement(By.xpath("(//input[@aria-label='Inbound'])[2]")));
+//		click(driver.findElement(By.xpath("(//div[text()='"+CampaignData[10]+"'])[2]")));
+//		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
 		click(driver.findElement(By.xpath("//label[text()='Channels']/following-sibling::div")));
-		click(driver.findElement(By.xpath("(//div[text()='"+CampaignData[5]+"'])[2]")));
+		click(driver.findElement(By.xpath("(//div[text()='"+CampaignData[7]+"'])")));
 		click(driver.findElement(By.xpath("//span[text()='Create Campaign']")));
 		click(driver.findElement(By.xpath("//input[@aria-label='Start Time']")));
 		click(driver.findElement(By.xpath("(//span[text()='1'])[1]")));
@@ -333,8 +374,12 @@ public class CRM_Creation extends SeleniumBase {
 		click(driver.findElement(By.xpath("(//label[text()='Campaign']/following-sibling::div)[3]")));
 		click(driver.findElement(By.xpath("(//div[text()='"+ListData[3]+"'])[3]")));
 		click(driver.findElement(By.xpath("//span[text()='Create List']")));
-		click(driver.findElement(By.xpath("(//label[text()='Auto Recycling Count']/following-sibling::div)[3]")));
+		
+		click(driver.findElement(By.xpath("(//label[text()='Recycling']/following-sibling::div)[3]")));
 		click(driver.findElement(By.xpath("(//div[text()='"+ListData[4]+"'])[2]")));
+		
+//		click(driver.findElement(By.xpath("(//label[text()='Auto Recycling Count']/following-sibling::div)[3]")));
+//		click(driver.findElement(By.xpath("(//div[text()='"+ListData[4]+"'])[2]")));
 		click(driver.findElement(By.xpath("//span[text()='Create List']")));
 		click(driver.findElement(By.xpath("(//div[text()='Create'])[1]")));
 		click(driver.findElement(By.xpath("(//div[@class='v-btn__content'][normalize-space()='Close'])[4]")));
@@ -399,7 +444,7 @@ public class CRM_Creation extends SeleniumBase {
 
 
 	}
-
+/*
 	@Test(dataProvider = "LeadData")
 	public void upload_Leadswithoutdpchk(String LeadData[]) throws AWTException, InterruptedException {
 
@@ -531,14 +576,31 @@ public class CRM_Creation extends SeleniumBase {
 
 	}
 	
+	*/
+	
+	@Test(dataProvider = "LeadData")
+	public void upload_Lead(String LeadData[]) throws InterruptedException {
+		
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		
+		click(driver.findElement(By.xpath("//span[text()='Leads']")));
+		click(driver.findElement(By.xpath("//label[text()='Select Template']/following-sibling::div")));
+		click(driver.findElement(By.xpath("//div[text()='"+LeadData[2]+"']")));
+		click(element(Locators.xpath, "//i[@title='Upload Leads']"));
+	//  yet to automated facing some issuse in list creation	
+		
+	}
+	
 	@Test(dataProvider = "LeadData")
 	public void create_Lead(String LeadData[]) throws InterruptedException {
+		
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		
 		click(driver.findElement(By.xpath("//span[text()='Leads']")));
 		click(driver.findElement(By.xpath("//label[text()='Select Template']/following-sibling::div")));
 		click(driver.findElement(By.xpath("//div[text()='"+LeadData[2]+"']")));
 		click(driver.findElement(By.xpath("//i[@title='Create Leads']")));
-		Thread.sleep(1000);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@aria-label='First Name']")));
 		type(driver.findElement(By.xpath("//input[@aria-label='First Name']")), LeadData[5]);
 		type(driver.findElement(By.xpath("//input[@aria-label='Phone Number']")), LeadData[3]);
 		click(driver.findElement(By.xpath("//input[@aria-label='Source']")));
@@ -576,6 +638,7 @@ public class CRM_Creation extends SeleniumBase {
 		}
 		
 	}
+
 
 	@Test(dataProvider = "ContactData")
 	public void create_Contact(String ContactData[]) throws InterruptedException {
@@ -628,16 +691,21 @@ public class CRM_Creation extends SeleniumBase {
 		type(driver.findElement(By.xpath("//input[@aria-label='Phone Number']")), MeetingData[2]);
 		
 		click(driver.findElement(By.xpath("//label[text()='Meeting title']/following-sibling::div")));
-		click(driver.findElement(By.xpath("(//div[text()='"+MeetingData[0]+"'])[2]")));
+		click(driver.findElement(By.xpath("//div[text()='"+MeetingData[0]+"']")));
 		click(driver.findElement(By.xpath("//span[text()='Create Meetings']")));
 		click(driver.findElement(By.xpath("(//label[text()='Agent']/following-sibling::div)[3]")));
 		click(driver.findElement(By.xpath("(//div[text()='"+MeetingData[3]+"'])[3]")));
 		click(driver.findElement(By.xpath("//span[text()='Create Meetings']")));
+		click(element(Locators.xpath, "((//label[text()='Meeting Date'])[2]/following::input)[1]"));
+		click(element(Locators.xpath, "//div[text()='Ok']"));
+		click(element(Locators.xpath, "//div[text()='Ok']"));
+
+		
 		click(driver.findElement(By.xpath("(//label[text()='Module']/following-sibling::div)[1]")));
 		click(driver.findElement(By.xpath("(//div[text()='"+MeetingData[5]+"'])[2]")));
 		click(driver.findElement(By.xpath("//span[text()='Create Meetings']")));
 		click(driver.findElement(By.xpath("//label[text()='Template']/following-sibling::div")));
-		click(driver.findElement(By.xpath("(//div[text()='"+MeetingData[7]+"'])[1]")));
+		click(driver.findElement(By.xpath("//div[text()='"+MeetingData[7]+"']")));
 		click(driver.findElement(By.xpath("//span[text()='Create Meetings']")));
 		click(driver.findElement(By.xpath("//div[text()='Create']")));
 		

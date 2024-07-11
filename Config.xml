@@ -3,19 +3,20 @@
 <suite name="Configuration">
   <test thread-count="5" name="Flow Test">
     <classes>
-      <class name="Doocti107_Admin.Configu_Createion">
+      <class name="Doocti107_Admin.Config_Createion">
 		  <methods>
+		  
+		  <!-- Creation-->
+		  	 
 			  <include name="create_Queue"/>
 			  <include name="create_DispowithAction"/>
-			  <include name="create_Queue"/>
-			  <include name="create_DispowithoutAction"/>
 			  <include name="create_Subdispo"/>
+			  <include name="create_DispowithoutAction"/>
 			  <include name="create_LeadStatuswithClosed"/>
 			  <include name="create_LeadStatuswithoutClosed"/>
 			  <include name="create_TicketStatuswithClosed"/>
 			  <include name="create_TicketStatuswithoutClosed"/>
 			  <include name="create_PauseCode"/>
-			  <include name="upload_Audio"/>
 			  <include name="upload_Blocklist"/>
 			  <include name="upload_DNC"/>
 			  <include name="upload_DID"/>
@@ -24,20 +25,57 @@
 			  <include name="create_Announcement"/>
 			  <include name="create_ScriptURL"/>
 			  <include name="create_ScriptText"/>
-			  <include name="create_SLA"/>
-			  <include name="create_Schedule"/>
 			  <include name="create_InboundwithBlklist"/>
 			  <include name="create_InboundwithoutBlklist"/>
-			  <include name="create_OminiChannel"/>
 			  <include name="create_TimeZone"/>
-		      <include name="create_Noti"/>
 			  <include name="create_SystemSettingDataLead"/>
 			  <include name="create_SystemSettingDataTicket"/>
 			  <include name="create_MeetingTitle"/>
+			  
+			  
+			  <include name="Update_Dispo"/>
+			  <include name="update_SubDispo"/>
+			  <include name="update_LeadStatus"/>
+			  <include name="update_TicketStatus"/>
+			  <include name="update_Pausecode"/>
+			  <include name="update_DID"/>
+			  <include name="update_Tag"/>
+			  <include name="update_Announcement"/>
+			  <include name="update_ScriptURL"/>
+			  <include name="update_Inbound"/>
+			  <include name="update_TimeZone"/>
+			  <include name="update_MeetingTitle"/>
+			  
+			  
+			  <include name="delete_Queue"/>
+			  <include name="delete_Dispo"/>
+			  <include name="delete_SubDispo"/>
+			  <include name="delete_LeadStatus"/>
+			  <include name="delete_TicketStatus"/>
+			  <include name="delete_Pausecode"/>
+			  <include name="delete_DID"/>
+			  <include name="delete_Tag"/>
+			  <include name="delete_Announcement"/>
+			  <include name="delete_ScriptURL"/>
 
-
-
-
+			  <include name="delete_Inbound"/>
+			  <include name="delete_TimeZone"/>
+			  <include name="delete_MeetingTitle"/>
+			  
+			   	
+	<!--
+			  <include name="create_OminiChannel"/>
+			  <include name="upload_Audio"/>
+			  <include name="create_SLA"/>
+			  <include name="create_Schedule"/>
+			  <include name="create_Noti"/>
+			  <include name="delete_SLA"/>
+			  <include name="delete_Scheduler"/>
+			  <include name="delete_Noti"/>
+			  <include name="update_Noti"/>
+			  <include name="update_SLA"/>
+			  <include name="update_Scheduler"/>
+		 -->
 		  </methods>
 	  </class>
     </classes>
